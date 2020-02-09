@@ -56,51 +56,29 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto" >
       <a class="nav-item nav-link" href="#">Kontakt </a>
-      <a class="nav-item nav-link active" href="{% url "home" %}">Resume</a>
-      <a class="nav-item nav-link" href="{% url "allblogs" %}">Blog</a>
+      <a class="nav-item nav-link" href="{% url "home" %}">Resume</a>
+      <a class="nav-item nav-link active" href="{% url "allblogs" %}">Blog</a>
 {#      <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>#}
     </div>
   </div>
 </nav>
 </header>
 
-<main role="main">
-
-  <section class="jumbotron text-center">
+<div role="main">
     <div class="container">
-      <h1>Bartłomiej Michał Węgrzyn</h1>
-      <p class="lead text-muted">To jest moje Curriculum Vitae</p>
-      <p>
-        <a href="malito:bart3k1@gmail.com" class="btn btn-primary my-2">e-mail</a>
-        <a href="tel:1-847-555-5555" class="btn btn-secondary my-2">telefon</a>
+        <h1 class="text-center pt-3">Blog</h1>
+        <br/><br/>
+            <h2>Latest posts</h2>
+            <hr/>
+                 {% for blog in blogs %}
+                     {{ blog.pub_date_pretty }}<br/>
+                     <a href="""><h3>{{ blog.title }}</h3></a>
+                     <img class="img-fluid" src="{{ blog.image.url }}"  width=150 /><br/>
+                     {{ blog.summary }}<br/><br/>
+                 {% endfor %}
 
-      </p>
+
     </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-
-        {% for job in jobs %}
-
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" src="{{ job.image.url }}"/>
-              <div class="card-body">
-              <p class="card-text"> {{ job.summary }} </p>
-
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-
-
-      </div>
-    </div>
-  </div>
-
 </main>
 
 <footer class="text-muted">
